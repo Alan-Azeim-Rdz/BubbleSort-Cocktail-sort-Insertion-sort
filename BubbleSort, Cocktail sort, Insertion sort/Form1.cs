@@ -6,38 +6,26 @@ namespace BubbleSort__Cocktail_sort__Insertion_sort
         {
             InitializeComponent();
         }
+        int row = 0;
+        int column = 0;
+        Organization organizar = new Organization();
 
         private void BtnInsert_Click(object sender, EventArgs e)
         {
+
             int[] Numbers = TxtDataNum.Text.Split(' ').Select(int.Parse).ToArray();
 
-            BubbleSort(Numbers);
+            organizar.OnSwap += UpdateListBox;
+            organizar.BubbleSort(Numbers);
+            organizar.OnSwap -= UpdateListBox;
 
-            DataGrideNumber.Rows.Clear();
-
-            foreach (int item in Numbers)
-            {
-                DataGrideNumber.Rows.Add(item);
-            }
         }
 
-        private void BubbleSort(int[] Data)
+        private void UpdateListBox(int[] numbers)
         {
-            int n = Data.Length;
-            for (int i = 0; i < n - 1; i++)
-            {
-                for (int j = 0; j < n - i - 1; j++)
-                {
-                    if (Data[j] > Data[j + 1])
-                    {
-                        // Intercambiar arr[j] y arr[j + 1]
-                        int temp = Data[j];
-                        Data[j] = Data[j + 1];
-                        Data[j + 1] = temp;
-                    }
-                }
-            }
+            string line = string.Join(" ", numbers);
+            LsBoxOrder.Items.Add(line);
         }
-    }
 
+    }
 }
