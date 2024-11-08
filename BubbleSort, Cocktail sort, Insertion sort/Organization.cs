@@ -12,33 +12,22 @@ namespace BubbleSort__Cocktail_sort__Insertion_sort
 
         public void BubbleSort(int[] array)
         {
-            int n = array.Length;
-            bool swapped;
-
+            int size = array.Length;
 
             // Bucle externo para las pasadas sobre el arreglo
-            for (int i = 0; i < n - 1; i++)
+            for (int quantity = 0; quantity < size - 1; quantity++)
             {
-                swapped = false;
-
                 // Bucle interno para comparar e intercambiar elementos adyacentes
-                for (int j = 0; j < n - i - 1; j++)
+                for (int current = 0; current < size - quantity - 1; current++)
                 {
-                    if (array[j] > array[j + 1])
+                    if (array[current] > array[current + 1])
                     {
                         // Intercambiar elementos
-                        int temporal = array[j];
-                        array[j] = array[j + 1];
-                        array[j + 1] = temporal;
-                        swapped = true;
+                        int temporal = array[current];
+                        array[current] = array[current + 1];
+                        array[current + 1] = temporal;
                         OnSwap?.Invoke(array);
                     }
-                }
-
-                // Si no hubo intercambio en una pasada, el arreglo ya está ordenado
-                if (!swapped)
-                {
-                    break;
                 }
             }
         }
