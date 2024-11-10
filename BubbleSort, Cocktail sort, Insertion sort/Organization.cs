@@ -10,6 +10,8 @@ namespace BubbleSort__Cocktail_sort__Insertion_sort
     {
         public event Action<int[]> OnSwap;
 
+
+
         public void BubbleSort(int[] array)
         {
             int size = array.Length;
@@ -29,6 +31,60 @@ namespace BubbleSort__Cocktail_sort__Insertion_sort
                         OnSwap?.Invoke(array);
                     }
                 }
+            }
+        }
+
+
+
+        public void Cocktail_Sort(int[] array)
+        {
+            bool swapped = true;
+            int start = 0;
+            int end = array.Length - 1;
+
+            while (swapped)
+            {
+                swapped = false;
+
+                // Recorrido de izquierda a derecha
+                for (int i = start; i < end; i++)
+                {
+                    if (array[i] > array[i + 1])
+                    {
+                        // Intercambiar elementos
+                        int temp = array[i];
+                        array[i] = array[i + 1];
+                        array[i + 1] = temp;
+                        OnSwap?.Invoke(array);
+                        swapped = true;
+                    }
+                }
+
+                // Si no hubo intercambio, el arreglo ya está ordenado
+                if (!swapped)
+                    break;
+
+                // Decrementar el final, ya que el último elemento está en su posición correcta
+                end--;
+
+                swapped = false;
+
+                // Recorrido de derecha a izquierda
+                for (int i = end - 1; i >= start; i--)
+                {
+                    if (array[i] > array[i + 1])
+                    {
+                        // Intercambiar elementos
+                        int temp = array[i];
+                        array[i] = array[i + 1];
+                        array[i + 1] = temp;
+                        OnSwap?.Invoke(array);
+                        swapped = true;
+                    }
+                }
+
+                // Incrementar el inicio, ya que el primer elemento está en su posición correcta
+                start++;
             }
         }
     }
