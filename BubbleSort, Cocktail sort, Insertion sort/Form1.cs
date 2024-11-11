@@ -32,6 +32,8 @@ namespace BubbleSort__Cocktail_sort__Insertion_sort
                     organizar.OnSwap -= UpdateListBox;
                     break;
             }
+           
+           
 
 
         }
