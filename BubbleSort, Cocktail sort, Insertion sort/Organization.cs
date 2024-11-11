@@ -46,6 +46,7 @@ namespace BubbleSort__Cocktail_sort__Insertion_sort
 
         public void Cocktail_Sort(int[] array)
         {
+
             bool swapped = true;
             int end = array.Length - 1;
 
