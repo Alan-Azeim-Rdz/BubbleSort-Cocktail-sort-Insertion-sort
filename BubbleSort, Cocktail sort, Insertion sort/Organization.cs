@@ -46,8 +46,7 @@ namespace BubbleSort__Cocktail_sort__Insertion_sort
 
         public void Cocktail_Sort(int[] array)
         {
-            swapped = true;
-            int start = 0;
+            bool swapped = true;
             int end = array.Length - 1;
 
             // Bucle externo que sigue ejecutándose mientras se hagan intercambios
@@ -68,6 +67,7 @@ namespace BubbleSort__Cocktail_sort__Insertion_sort
                     }
                 }
 
+
                 // Si no hubo intercambios en la pasada, el arreglo ya está ordenado
                 if (!swapped) break;
 
@@ -86,11 +86,6 @@ namespace BubbleSort__Cocktail_sort__Insertion_sort
                     }
                 }
             }
-
-                // Incrementar el inicio, ya que el primer elemento está en su posición correcta
-                start++;
-            }
-
         }
     }
 }
