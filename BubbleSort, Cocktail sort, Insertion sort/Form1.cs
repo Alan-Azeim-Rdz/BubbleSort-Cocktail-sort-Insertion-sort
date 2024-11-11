@@ -13,6 +13,12 @@ namespace BubbleSort__Cocktail_sort__Insertion_sort
 
         private void BtnInsert_Click(object sender, EventArgs e)
         {
+            if (ComBoxSelect.SelectedItem == null)
+            {
+                MessageBox.Show("Selecciona un tipo de algoritmo de organisacion");
+                return;
+            }
+
             string seleccion = ComBoxSelect.SelectedItem.ToString();
 
 

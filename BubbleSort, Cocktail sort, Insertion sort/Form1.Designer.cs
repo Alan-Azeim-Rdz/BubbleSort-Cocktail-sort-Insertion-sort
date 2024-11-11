@@ -66,11 +66,12 @@
             // 
             // LsBoxOrder
             // 
+            LsBoxOrder.Font = new Font("Times New Roman", 26.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             LsBoxOrder.FormattingEnabled = true;
-            LsBoxOrder.ItemHeight = 15;
+            LsBoxOrder.ItemHeight = 40;
             LsBoxOrder.Location = new Point(466, 12);
             LsBoxOrder.Name = "LsBoxOrder";
-            LsBoxOrder.Size = new Size(754, 304);
+            LsBoxOrder.Size = new Size(754, 324);
             LsBoxOrder.TabIndex = 5;
             // 
             // ComBoxSelect
