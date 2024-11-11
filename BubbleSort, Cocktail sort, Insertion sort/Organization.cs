@@ -36,56 +36,52 @@ namespace BubbleSort__Cocktail_sort__Insertion_sort
 
 
 
+
         public void Cocktail_Sort(int[] array)
         {
             bool swapped = true;
-            int start = 0;
             int end = array.Length - 1;
 
-            while (swapped)
+            // Bucle externo que sigue ejecutándose mientras se hagan intercambios
+            for (int start = 0; start < end && swapped; start++, end--)
             {
                 swapped = false;
 
-                // Recorrido de izquierda a derecha
+                // Bucle para la pasada de izquierda a derecha
                 for (int i = start; i < end; i++)
                 {
                     if (array[i] > array[i + 1])
                     {
-                        // Intercambiar elementos
-                        int temp = array[i];
+                        int temporal = array[i];
                         array[i] = array[i + 1];
-                        array[i + 1] = temp;
-                        OnSwap?.Invoke(array);
+                        array[i + 1] = temporal;
                         swapped = true;
+                        OnSwap?.Invoke(array); // Llamada al evento después de cada intercambio
                     }
                 }
 
-                // Si no hubo intercambio, el arreglo ya está ordenado
-                if (!swapped)
-                    break;
-
-                // Decrementar el final, ya que el último elemento está en su posición correcta
-                end--;
+                // Si no hubo intercambios en la pasada, el arreglo ya está ordenado
+                if (!swapped) break;
 
                 swapped = false;
 
-                // Recorrido de derecha a izquierda
+                // Bucle para la pasada de derecha a izquierda
                 for (int i = end - 1; i >= start; i--)
                 {
                     if (array[i] > array[i + 1])
                     {
-                        // Intercambiar elementos
-                        int temp = array[i];
+                        int temporal = array[i];
                         array[i] = array[i + 1];
-                        array[i + 1] = temp;
-                        OnSwap?.Invoke(array);
+                        array[i + 1] = temporal;
                         swapped = true;
+                        OnSwap?.Invoke(array); // Llamada al evento después de cada intercambio
                     }
                 }
-
-                // Incrementar el inicio, ya que el primer elemento está en su posición correcta
-                start++;
             }
+
+
+
+
         }
     }
 }
