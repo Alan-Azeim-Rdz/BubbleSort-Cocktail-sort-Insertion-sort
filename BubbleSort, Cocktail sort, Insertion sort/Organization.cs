@@ -46,9 +46,8 @@ namespace BubbleSort__Cocktail_sort__Insertion_sort
 
         public void Cocktail_Sort(int[] array)
         {
-
-            bool swapped = true;
             int end = array.Length - 1;
+            swapped = true;
 
             // Bucle externo que sigue ejecutándose mientras se hagan intercambios
             for (int start = 0; start < end && swapped; start++, end--)
@@ -56,13 +55,13 @@ namespace BubbleSort__Cocktail_sort__Insertion_sort
                 swapped = false;
 
                 // Bucle para la pasada de izquierda a derecha
-                for (int i = start; i < end; i++)
+                for (int current = start; current < end; current++)
                 {
-                    if (array[i] > array[i + 1])
+                    if (array[current] > array[current + 1])
                     {
-                        int temporal = array[i];
-                        array[i] = array[i + 1];
-                        array[i + 1] = temporal;
+                        int temporal = array[current];
+                        array[current] = array[current + 1];
+                        array[current + 1] = temporal;
                         swapped = true;
                         OnSwap?.Invoke(array); // Llamada al evento después de cada intercambio
                     }
