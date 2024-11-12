@@ -88,5 +88,44 @@ namespace BubbleSort__Cocktail_sort__Insertion_sort
                 }
             }
         }
+
+
+        private void Insertionsort(int[] array)
+        {
+            int largo = array.Length;
+
+            for (int i = 1; i < largo; i++)
+            {
+                int elemento = array[i];
+                int j = i - 1;
+
+                // Mover elementos mayores a una posición adelante
+                while (j >= 0 && array[j] > elemento)
+                {
+                    array[j + 1] = array[j];
+                    j--;
+                    OnSwap?.Invoke(array);
+                }
+                array[j + 1] = elemento;
+                OnSwap?.Invoke(array);
+            }
+        }
+
+
+
+        public static void DesordenarArreglo(int[] arreglo)
+        {
+            Random random = new Random();
+
+            for (int i = 0; i < arreglo.Length; i++)
+            {
+                int j = random.Next(i, arreglo.Length); // Índice aleatorio desde i hasta el final
+                                                        // Intercambiar elementos en las posiciones i y j
+                int temp = arreglo[i];
+                arreglo[i] = arreglo[j];
+                arreglo[j] = temp;
+            }
+        }
+
     }
 }
