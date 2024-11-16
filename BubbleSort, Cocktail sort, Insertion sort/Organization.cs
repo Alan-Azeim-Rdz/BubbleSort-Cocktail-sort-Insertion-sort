@@ -10,6 +10,7 @@ namespace BubbleSort__Cocktail_sort__Insertion_sort
     internal class Organization
     {
         public event Action<int[]> OnSwap;
+
         public bool swapped;
 
 
@@ -24,6 +25,7 @@ namespace BubbleSort__Cocktail_sort__Insertion_sort
                 // Bucle interno para comparar e intercambiar elementos adyacentes
                 for (int current = 0; current < size - quantity - 1; current++)
                 {
+                    //if (array[current] < array[current + 1])
                     if (array[current] > array[current + 1])
                     {
                         // Intercambiar elementos
@@ -33,7 +35,7 @@ namespace BubbleSort__Cocktail_sort__Insertion_sort
                         swapped = true;
                         OnSwap?.Invoke(array);
                     }
-                }
+                 }
                 if (!swapped)
                 {
                     break;
@@ -57,6 +59,7 @@ namespace BubbleSort__Cocktail_sort__Insertion_sort
                 // Bucle para la pasada de izquierda a derecha
                 for (int current = start; current < end; current++)
                 {
+                    //if (array[current] < array[current + 1])
                     if (array[current] > array[current + 1])
                     {
                         int temporal = array[current];
@@ -76,7 +79,8 @@ namespace BubbleSort__Cocktail_sort__Insertion_sort
                 // Bucle para la pasada de derecha a izquierda
                 for (int i = end - 1; i >= start; i--)
                 {
-                    if (array[i] > array[i + 1])
+                  //if(array[i] < array[i + 1])
+                  if (array[i] > array[i + 1])
                     {
                         int temporal = array[i];
                         array[i] = array[i + 1];
@@ -89,7 +93,7 @@ namespace BubbleSort__Cocktail_sort__Insertion_sort
         }
 
 
-        private void Insertionsort(int[] array)
+        public void Insertionsort(int[] array)
         {
             int largo = array.Length;
 
@@ -99,6 +103,7 @@ namespace BubbleSort__Cocktail_sort__Insertion_sort
                 int j = i - 1;
 
                 // Mover elementos mayores a una posición adelante
+                //array[j] < elemento
                 while (j >= 0 && array[j] > elemento)
                 {
                     array[j + 1] = array[j];
@@ -112,18 +117,21 @@ namespace BubbleSort__Cocktail_sort__Insertion_sort
 
 
 
-        public static void DesordenarArreglo(int[] arreglo)
+        public int[] DesordenarArreglo(int[] array)
         {
             Random random = new Random();
 
-            for (int i = 0; i < arreglo.Length; i++)
+
+            for (int i = 0; i < array.Length; i++)
             {
-                int j = random.Next(i, arreglo.Length); // Índice aleatorio desde i hasta el final
+                int j = random.Next(i, array.Length); // Índice aleatorio desde i hasta el final
                                                         // Intercambiar elementos en las posiciones i y j
-                int temp = arreglo[i];
-                arreglo[i] = arreglo[j];
-                arreglo[j] = temp;
+                int temp = array[i];
+                array[i] = array[j];
+                array[j] = temp;
             }
+
+            return array;
         }
 
     }
